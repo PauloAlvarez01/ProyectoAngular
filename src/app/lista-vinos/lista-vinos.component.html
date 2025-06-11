@@ -1,0 +1,47 @@
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Cepa</th>
+            <th>Bodega</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Imagen</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (vino of vinos; track vino.nombre) {
+        <tr [ngClass]="{'liquidacion':vino.liquidacion}">
+            <td>{{vino.nombre}}</td>
+            <td>{{vino.cepa}}</td>
+            <td>{{vino.bodega}}</td>
+            <td>{{vino.precio | currency}}</td>
+            @if (vino.stock > 0) {
+            <td>{{vino.stock}}</td>
+            } @else {
+            <td><span class="badge text-bg-warning">Sin Stock</span></td>
+            }
+            <td><img [src]="vino.imagen" [alt]="vino.nombre"></td>
+            <td>
+                <div class="d-flex align-items-center gap-1">
+                    <button 
+                        type="button" 
+                        class="btn btn-secondary btn-sm" 
+                        (click)="disminuirCantidad(vino)">-</button>
+                    <input 
+                        type="text" 
+                        [(ngModel)]="vino.cantidad"
+                        min="0"
+                        [max]="vino.stock" class="form-control form-control-sm"
+                        (input)="validarCantidad($event, vino)">
+                    <button 
+                        type="button" 
+                        class="btn btn-secondary btn-sm" 
+                        (click)="aumentarCantidad(vino)">+</button>
+                </div>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
