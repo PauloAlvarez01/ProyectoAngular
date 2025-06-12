@@ -5,11 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListaVinosComponent } from './lista-vinos/lista-vinos.component';
 import { FormsModule } from '@angular/forms';
+import { VinotecaAboutComponent } from './vinoteca-about/vinoteca-about.component';
+import { VinotecaVinosComponent } from './vinoteca-vinos/vinoteca-vinos.component';
+import { CarritoComponent } from './carrito/carrito.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListaVinosComponent
+    ListaVinosComponent,
+    VinotecaAboutComponent,
+    VinotecaVinosComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
