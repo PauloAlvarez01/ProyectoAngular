@@ -9,6 +9,7 @@ import { VinotecaAboutComponent } from './vinoteca-about/vinoteca-about.componen
 import { VinotecaVinosComponent } from './vinoteca-vinos/vinoteca-vinos.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { InputCantidadComponent } from './input-cantidad/input-cantidad.component';
+import { EnvioComponent } from './envio/envio.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { InputCantidadComponent } from './input-cantidad/input-cantidad.componen
     VinotecaAboutComponent,
     VinotecaVinosComponent,
     CarritoComponent,
-    InputCantidadComponent
+    InputCantidadComponent,
+    EnvioComponent
   ],
   imports: [
     BrowserModule,

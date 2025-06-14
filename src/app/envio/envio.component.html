@@ -1,0 +1,12 @@
+<h4>Calcular costo de envío (máx: 2000km)</h4>
+
+<app-input-cantidad
+  [(cantidad)]="kms"
+  [max]="2000"
+  (maximoAlcanzado)="mostrarAviso($event)">
+</app-input-cantidad>
+
+<p *ngIf="mensajeAviso" class="text-warning small mt-1">{{ mensajeAviso }}</p>
+
+<p *ngIf="kms !== null">Costo estimado: {{ calcularCostoEnvio() | currency }}</p>
+
