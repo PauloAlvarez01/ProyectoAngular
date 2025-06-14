@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TarifaEnvio } from './TarifaEnvio';
 
 @Component({
   selector: 'app-envio',
@@ -11,20 +12,22 @@ export class EnvioComponent {
   kms: number = 0;
   mensajeAviso: string = '';
 
+  //atencion! ordenar el arreglo de menor a mayor para no tener problemas con el find()!!!
+  //ya que devuelve el primer valor que encuentra 
+  tarifas: TarifaEnvio[] = [
+    { hastaKm: 20, costo: 0 },
+    { hastaKm: 100, costo: 540 },
+    { hastaKm: 1000, costo: 1280 },
+    { hastaKm: 2000, costo: 2620 }
+  ];
+
   mostrarAviso(mensaje: string) {
     this.mensajeAviso = mensaje;
     setTimeout(() => this.mensajeAviso = '', 3000);
   }
 
   calcularCostoEnvio(): number {
-    if (this.kms <= 20) {
-      return 0;
-    } else if (this.kms <= 100) {
-      return 540; // envío entre 21 y 100 km
-    } else if (this.kms <= 1000) {
-      return 1185; // entre 101 y 1000 km
-    } else {
-      return 2680; // más de 1000 km hasta 2000 km
-    }
+    const tarifa = this.tarifas.find(t => this.kms <= t.hastaKm);
+    return tarifa ? tarifa.costo : 0;
   }
 }
