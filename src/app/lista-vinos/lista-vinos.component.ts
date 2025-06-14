@@ -9,6 +9,13 @@ import { Vino } from './Vino';
 })
 export class ListaVinosComponent {
 
+  mensajeMostrado: string | null = null;
+
+  maximoAlcanzado(m: string): void {
+  this.mensajeMostrado = m;
+  setTimeout(() => this.mensajeMostrado = null, 2000);
+  }
+
   vinos: Vino[] = [
     {
       nombre: 'Don Valentin',
@@ -45,7 +52,7 @@ export class ListaVinosComponent {
       cepa: 'Malbec',
       bodega: 'Navarro Correas',
       precio: 6800,
-      stock: 9,
+      stock: 2009,
       imagen: 'assets/img/vino4.jpeg',
       liquidacion: true,
       cantidad: 0,

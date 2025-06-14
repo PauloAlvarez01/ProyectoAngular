@@ -15,12 +15,17 @@ export class InputCantidadComponent {
   max!: number;
 
   @Output()
-  cantidadChange: EventEmitter<number> = new EventEmitter();
+  cantidadChange: EventEmitter<number> = new EventEmitter <number>();
+
+  @Output()
+  maximoAlcanzado: EventEmitter<string> = new EventEmitter <string>();
 
   aumentarCantidad(): void {
     if (this.cantidad < this.max && this.max != 0){
       this.cantidad++;
       this.cantidadChange.emit(this.cantidad);
+    }else{
+      this.maximoAlcanzado.emit("Alcanzó el límite máximo");
     } 
   }
 

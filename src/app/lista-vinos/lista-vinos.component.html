@@ -1,4 +1,7 @@
 <h3 class="fw-bold fs-5">Lista de vinos</h3>
+<span *ngIf="mensajeMostrado" class="d-block text-warning small mt-1">
+    {{ mensajeMostrado }}
+</span>
 <table class="table text-center mt-5">
     <thead>
         <tr>
@@ -26,10 +29,15 @@
             <td><img [src]="vino.imagen" [alt]="vino.nombre"></td>
             <td>
                 @if (vino.stock >0) {
-                <app-input-cantidad [(cantidad)]="vino.cantidad" [max]="vino.stock" ></app-input-cantidad>
+                <app-input-cantidad 
+                    [(cantidad)]="vino.cantidad" 
+                    [max]="vino.stock"
+                    (maximoAlcanzado)="maximoAlcanzado($event)">
+                </app-input-cantidad>
                 }
             </td>
         </tr>
         }
     </tbody>
+
 </table>
