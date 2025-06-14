@@ -25,22 +25,9 @@
             }
             <td><img [src]="vino.imagen" [alt]="vino.nombre"></td>
             <td>
-                <div class="d-flex align-items-center gap-1">
-                    <button 
-                        type="button" 
-                        class="btn btn-secondary btn-sm" 
-                        (click)="disminuirCantidad(vino)">-</button>
-                    <input 
-                        type="text" 
-                        [(ngModel)]="vino.cantidad"
-                        min="0"
-                        [max]="vino.stock" class="form-control form-control-sm"
-                        (input)="validarCantidad($event, vino)">
-                    <button 
-                        type="button" 
-                        class="btn btn-secondary btn-sm" 
-                        (click)="aumentarCantidad(vino)">+</button>
-                </div>
+                @if (vino.stock >0) {
+                <app-input-cantidad [(cantidad)]="vino.cantidad" [max]="vino.stock" ></app-input-cantidad>
+                }
             </td>
         </tr>
         }

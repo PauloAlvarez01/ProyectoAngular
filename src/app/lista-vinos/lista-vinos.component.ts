@@ -52,30 +52,4 @@ export class ListaVinosComponent {
     }
   ]
 
-  aumentarCantidad(vino: Vino): void {
-    if (vino.cantidad < vino.stock && vino.stock != 0)
-      vino.cantidad++;
-  }
-
-  disminuirCantidad(vino: Vino): void {
-    if (vino.cantidad != 0)
-      vino.cantidad--;
-  }
-
-  validarCantidad(event: Event, vino: Vino): void {
-    const input = event.target as HTMLInputElement;
-    let valor = Number(input.value);
-
-    if (isNaN(valor) || valor < 0) {
-      vino.cantidad = 0;
-    } else if (valor > vino.stock) {
-      vino.cantidad = vino.stock;
-    } else {
-      vino.cantidad = valor;
-    }
-    input.value = vino.cantidad.toString();
-  }
-
-
-
 }
