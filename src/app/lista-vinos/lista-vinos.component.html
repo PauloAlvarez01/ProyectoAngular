@@ -1,7 +1,4 @@
 <h3 class="fw-bold fs-5">Lista de vinos</h3>
-<span *ngIf="mensajeMostrado" class="d-block text-warning small mt-1">
-    {{ mensajeMostrado }}
-</span>
 <table class="table text-center mt-5">
     <thead>
         <tr>
@@ -43,5 +40,10 @@
         </tr>
         }
     </tbody>
-
 </table>
+
+@if (mensajeMostrado) {
+  <div class="notificacion-flotante">
+    {{ mensajeMostrado }}
+  </div>
+}

@@ -10,6 +10,7 @@ import { VinotecaVinosComponent } from './vinoteca-vinos/vinoteca-vinos.componen
 import { CarritoComponent } from './carrito/carrito.component';
 import { InputCantidadComponent } from './input-cantidad/input-cantidad.component';
 import { EnvioComponent } from './envio/envio.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EnvioComponent } from './envio/envio.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

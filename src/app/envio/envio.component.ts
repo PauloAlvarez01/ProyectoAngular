@@ -7,11 +7,13 @@ import { TarifaEnvio } from './TarifaEnvio';
   templateUrl: './envio.component.html',
   styleUrl: './envio.component.scss'
 })
+
 export class EnvioComponent {
 
   kms: number = 0;
   mensajeAviso: string = '';
-
+  max : number = 2000;
+  
   //atencion! ordenar el arreglo de menor a mayor para no tener problemas con el find()!!!
   //ya que devuelve el primer valor que encuentra 
   tarifas: TarifaEnvio[] = [
@@ -23,7 +25,7 @@ export class EnvioComponent {
 
   mostrarAviso(mensaje: string) {
     this.mensajeAviso = mensaje;
-    setTimeout(() => this.mensajeAviso = '', 3000);
+    setTimeout(() => this.mensajeAviso = '', 2000);
   }
 
   calcularCostoEnvio(): number {
