@@ -1,2 +1,27 @@
 <h3 class="fw-bold fs-5">Carrito de compras</h3>
-<p class="mt-5">carrito</p>
+
+<div class="container mt-4">
+  @if (listaCarrito$ | async; as lista) {
+    @if (lista.length > 0) {
+      <ul class="list-group mb-3">
+        @for (vino of lista; track vino.nombre) {
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ vino.nombre }} ({{ vino.cantidad }} x ${{ vino.precio }})
+            <span class="badge bg-primary rounded-pill">
+              ${{ vino.cantidad * vino.precio }}
+            </span>
+          </li>
+        }
+      </ul>
+      <h5 class="text-end">
+        Total: ${{ calcularTotal(lista) }}
+      </h5>
+    } @else {
+      <p class="text-muted">El carrito está vacío.</p>
+    }
+  } @else {
+    <p class="text-muted">Cargando carrito...</p>
+  }
+</div>
+
+

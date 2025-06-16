@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Vino } from './Vino';
+import { VinoCarritoService } from '../vino-carrito.service';
 
 @Component({
   selector: 'app-lista-vinos',
@@ -10,11 +11,6 @@ import { Vino } from './Vino';
 export class ListaVinosComponent {
 
   mensajeMostrado: string | null = null;
-
-  maximoAlcanzado(m: string): void {
-  this.mensajeMostrado = m;
-  setTimeout(() => this.mensajeMostrado = null, 2000);
-  }
 
   vinos: Vino[] = [
     {
@@ -58,5 +54,22 @@ export class ListaVinosComponent {
       cantidad: 0,
     }
   ]
+
+  constructor(private vinoCarritoService: VinoCarritoService) { }
+
+  agregarAlCarrito(vino: Vino) {
+    if (vino.cantidad > 0) {
+      this.vinoCarritoService.agregarAlCarrito(vino);
+      vino.stock -= vino.cantidad;
+      vino.cantidad = 0;
+    }
+  }
+
+
+
+  maximoAlcanzado(m: string): void {
+    this.mensajeMostrado = m;
+    setTimeout(() => this.mensajeMostrado = null, 2000);
+  }
 
 }

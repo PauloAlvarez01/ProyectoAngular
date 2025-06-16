@@ -12,6 +12,7 @@
             <th>Stock</th>
             <th>Imagen</th>
             <th>Cantidad</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +36,9 @@
                     (maximoAlcanzado)="maximoAlcanzado($event)">
                 </app-input-cantidad>
                 }
+            </td>
+            <td>
+                <button class="btn btn-secondary" (click)="agregarAlCarrito(vino)" [disabled]="vino.stock == 0" >Comprar</button>
             </td>
         </tr>
         }
