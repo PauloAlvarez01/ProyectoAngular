@@ -1,10 +1,13 @@
 <h4>Calcular costo de envío (máx: {{max}}km)</h4>
 
-<app-input-cantidad
-  [(cantidad)]="kms"
-  [max]="max"
-  (maximoAlcanzado)="mostrarAviso($event)">
-</app-input-cantidad>
+<div class="d-inline-flex align-items-center">
+  <app-input-cantidad
+    [(cantidad)]="kms"
+    [max]="max"
+    (maximoAlcanzado)="mostrarAviso($event)">
+  </app-input-cantidad>
+  <span class="ms-1">km</span>
+</div>
 
 @if (mensajeAviso) {
   <p class="text-warning small mt-1">
@@ -17,5 +20,6 @@
     Costo estimado: {{ calcularCostoEnvio() | currency }}
   </p>
 }
+
 
 
