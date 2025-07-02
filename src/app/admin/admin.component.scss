@@ -1,0 +1,33 @@
+form {
+    width: 500px;
+    max-width: 100%;
+    padding: 16px;
+    border: 1px solid gray;
+    border-radius: 16px;
+}
+.control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+
+  input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  &.invalid input {
+    border-color: red;
+    outline: none;
+  }
+
+  .error-message {
+    font-size: small;
+    color: red;
+
+    p {
+      margin: 0;
+    }
+  }
+}

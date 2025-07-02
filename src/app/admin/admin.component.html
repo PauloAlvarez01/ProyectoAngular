@@ -1,1 +1,100 @@
-<p>admin works!</p>
+<h2>{{ modoEdicion ? 'Editar Vino' : 'Agregar Nuevo Vino' }}</h2>
+
+<form [formGroup]="formVino" (ngSubmit)="onSubmit()">
+  <div class="control" [class.invalid]="formVino.get('nombre')?.invalid && formVino.get('nombre')?.touched">
+    <label>Nombre</label>
+    <input type="text" formControlName="nombre">
+    <div class="error-message">
+      <p *ngIf="formVino.get('nombre')?.hasError('required')">Campo obligatorio</p>
+    </div>
+  </div>
+
+  <div class="control" [class.invalid]="formVino.get('cepa')?.invalid && formVino.get('cepa')?.touched">
+    <label>Cepa</label>
+    <input type="text" formControlName="cepa">
+    <div class="error-message">
+      <p *ngIf="formVino.get('cepa')?.hasError('required')">Campo obligatorio</p>
+    </div>
+  </div>
+
+  <div class="control" [class.invalid]="formVino.get('bodega')?.invalid && formVino.get('bodega')?.touched">
+    <label>Bodega</label>
+    <input type="text" formControlName="bodega">
+    <div class="error-message">
+      <p *ngIf="formVino.get('bodega')?.hasError('required')">Campo obligatorio</p>
+    </div>
+  </div>
+
+  <div class="control" [class.invalid]="formVino.get('precio')?.invalid && formVino.get('precio')?.touched">
+    <label>Precio</label>
+    <input type="number" formControlName="precio">
+    <div class="error-message">
+      <p *ngIf="formVino.get('precio')?.hasError('required')">Campo obligatorio</p>
+      <p *ngIf="formVino.get('precio')?.hasError('min')">Debe ser mayor que 0</p>
+    </div>
+  </div>
+
+  <div class="control" [class.invalid]="formVino.get('stock')?.invalid && formVino.get('stock')?.touched">
+    <label>Stock</label>
+    <input type="number" formControlName="stock">
+    <div class="error-message">
+      <p *ngIf="formVino.get('stock')?.hasError('required')">Campo obligatorio</p>
+      <p *ngIf="formVino.get('stock')?.hasError('min')">No puede ser negativo</p>
+    </div>
+  </div>
+
+  <div class="control" [class.invalid]="formVino.get('imagen')?.invalid && formVino.get('imagen')?.touched">
+    <label>URL de la imagen</label>
+    <input type="text" formControlName="imagen">
+    <div class="error-message">
+      <p *ngIf="formVino.get('imagen')?.hasError('required')">Campo obligatorio</p>
+    </div>
+  </div>
+
+  <div class="control">
+    <label>
+      <input type="checkbox" formControlName="liquidacion">
+      En liquidación
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="formVino.invalid">
+    {{ modoEdicion ? 'Guardar cambios' : 'Agregar Vino' }}
+  </button>
+  <button type="button" class="btn btn-secondary ms-2" (click)="resetFormulario()">Cancelar</button>
+</form>
+
+<hr>
+
+<h3 class="mt-4">Vinos cargados</h3>
+<table class="table table-bordered text-center mt-3">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Cepa</th>
+      <th>Bodega</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Liquidación</th>
+      <th>Imagen</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (vino of vinos; track vino.nombre) {
+      <tr>
+        <td>{{ vino.nombre }}</td>
+        <td>{{ vino.cepa }}</td>
+        <td>{{ vino.bodega }}</td>
+        <td>{{ vino.precio | currency }}</td>
+        <td>{{ vino.stock }}</td>
+        <td>{{ vino.liquidacion ? 'Sí' : 'No' }}</td>
+        <td><img [src]="vino.imagen" alt="{{ vino.nombre }}" width="50"></td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="editarVino(vino)">Editar</button>
+          <button class="btn btn-sm btn-danger" (click)="eliminarVino(vino['id'])">Eliminar</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
