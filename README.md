@@ -1,3 +1,43 @@
+# 🍷 VinotecaAngular
+
+Aplicación web desarrollada en Angular para la gestión y compra de vinos.
+
+## 📌 Temática
+
+La app permite a los usuarios visualizar una lista de vinos, seleccionar cantidad y agregarlos a un carrito de compras. Además, cuenta con un panel de administrador con autenticación para crear, editar y eliminar productos (vinos).
+
+## 👤 Datos del desarrollador
+
+- **Nombre y Apellido:** Paulo Manuel Alvarez  
+- **DNI:** 25906507 
+- **Email:** palvarez@alumnos.exa.unicen.edu.ar  
+- **Sede:** Tandil
+
+## 🔐 Acceso al panel de administración
+
+- **Usuario:** admin  
+- **Contraseña:** admin123  
+
+Solo usuarios autenticados pueden acceder a la sección de administración.
+
+## 🔗 Backend simulado (MockAPI)
+
+Los datos se obtienen desde una API REST simulada mediante MockAPI:
+
+https://68500da9e7c42cfd17972d0f.mockapi.io/vinos
+
+
+- Cada vino contiene: `nombre`, `cepa`, `bodega`, `precio`, `stock`, `imagen`, `liquidacion` y `cantidad`.
+- El campo `cantidad` es manejado únicamente desde el frontend.
+
+## 🖼️ Imágenes
+
+Las imágenes de los vinos se cargan mediante URLs externas. No se almacenan localmente.
+
+## 🔁 Reutilización de componentes
+
+Se reutilizó el componente `input-cantidad` tanto para seleccionar la cantidad de vinos como para definir los kilómetros de envío en el cálculo del costo de entrega, promoviendo modularidad y consistencia.
+
 # VinotecaAngular
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.13.
