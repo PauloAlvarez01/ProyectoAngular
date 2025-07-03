@@ -18,7 +18,8 @@ La app permite a los usuarios visualizar una lista de vinos, seleccionar cantida
 - **Usuario:** admin  
 - **Contraseña:** admin123  
 
-Solo usuarios autenticados pueden acceder a la sección de administración.
+Solo usuarios autenticados pueden acceder a la sección de administración. En ésta se podrán agregar, modificar o eliminar vinos. Aclaración: se deja precargada una url válida de una foto en el valor por defecto del formulario reactivo, sólo para probar la funcionalidad de agregar un vino con una foto real.
+Se implementaron formularios reactivos para el login y para las funcionalidades del administrador (cargar, modificar).
 
 ## 🔗 Backend simulado (MockAPI)
 
@@ -27,7 +28,7 @@ Los datos se obtienen desde una API REST simulada mediante MockAPI:
 https://68500da9e7c42cfd17972d0f.mockapi.io/vinos
 
 
-- Cada vino contiene: `nombre`, `cepa`, `bodega`, `precio`, `stock`, `imagen`, `liquidacion` y `cantidad`.
+- Cada vino contiene: `nombre`, `cepa`, `bodega`, `precio`, `stock`, `imagen`, `liquidacion` y `cantidad`
 - El campo `cantidad` es manejado únicamente desde el frontend.
 
 ## 🖼️ Imágenes
@@ -36,7 +37,7 @@ Las imágenes de los vinos se cargan mediante URLs externas. No se almacenan loc
 
 ## 🔁 Reutilización de componentes
 
-Se reutilizó el componente `input-cantidad` tanto para seleccionar la cantidad de vinos como para definir los kilómetros de envío en el cálculo del costo de entrega, promoviendo modularidad y consistencia.
+Se reutilizó el componente `input-cantidad` tanto para seleccionar la cantidad de vinos como para definir los kilómetros de envío en el cálculo del costo de entrega, en ambos casos con alertas diferentes para el mensaje del máximo alcanzado.
 
 # VinotecaAngular
 
